@@ -1,0 +1,12 @@
+#!/bin/bash
+#MSUB -M jessicayu2014@u.northwestern.edu
+#MSUB -o /home/jsy331/Matlab/logs/corr_${MOAB_JOBARRAYINDEX}.log
+#MSUB -l walltime=1:00:00
+#MSUB -l nodes=1:ppn=17
+#MSUB -j oe
+#MSUB -m bae
+#MSUB -q short
+
+cd $PBS_O_WORKDIR
+module load matlab/r2016a
+matlab -nodisplay -nosplash -singleCompThread -r "LM_CONTROLLER(4, $MOAB_JOBARRAYINDEX, 'CORR')"
